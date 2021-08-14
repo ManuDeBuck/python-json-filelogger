@@ -1,5 +1,8 @@
 # 📖 A Python json-logger
 
+![Lint code and run tests](https://github.com/ManuDeBuck/python-jsonlogger/workflows/Lint%20code%20and%20run%20tests/badge.svg)
+[![pypi](https://img.shields.io/pypi/v/jsonlogger?color=%234d84f5&style=flat-square)](https://pypi.org/project/jsonlogger)
+
 A simple way to log data to json-files from within your code.
 
 ## Installation
