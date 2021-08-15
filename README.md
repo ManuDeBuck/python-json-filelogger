@@ -78,6 +78,7 @@ while iteration < 100_000:
         score: score,
         other_data: other_data
     })
+    iteration += 1
 writer.flush()
 ```
 
