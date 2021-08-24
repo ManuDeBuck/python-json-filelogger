@@ -1,6 +1,6 @@
-# 📖 A Python json-logger
+# 📖 A Python json-filelogger
 
-![Lint code and run tests](https://github.com/ManuDeBuck/python-jsonlogger/workflows/Lint%20code%20and%20run%20tests/badge.svg)
+![Lint code and run tests](https://github.com/ManuDeBuck/python-json-filelogger/workflows/Lint%20code%20and%20run%20tests/badge.svg)
 [![pypi](https://img.shields.io/pypi/v/jsonlogger?color=%234d84f5&style=flat-square)](https://pypi.org/project/jsonlogger)
 
 A simple way to log data to json-files from within your code.
@@ -10,7 +10,7 @@ A simple way to log data to json-files from within your code.
 You can use the python package manager (`pip`) to install the file-logger:
 
 ```bash
-pip install jsonlogger
+pip install jsonfilelogger
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ pip install jsonlogger
 Create a `LogWriter`:
 
 ```python
-from jsonlogger.logger import LogWriter
+from jsonfilelogger.logger import LogWriter
 
 writer = LogWriter(folder="./", filename="log.json", threshold=10)
 ```
@@ -37,7 +37,7 @@ writer.log({"key_int": 1,
 Create a `LogReader`:
 
 ```python
-from jsonlogger.logger import LogReader
+from jsonfilelogger.logger import LogReader
 
 reader = LogReader(folder="./", filename="log.json")
 ```
@@ -66,7 +66,7 @@ During training one want's to keep an eye on the performance of the progress. To
 In another process (e.g. in another Jupyter notebook) it is then possible to read in the data and make amazing visualisations (yay, visualisations!) of how your breakthrough model is performing...
 
 ```python
-from jsonlogger.logger import LogWriter
+from jsonfilelogger.logger import LogWriter
 
 writer = LogWriter.with_datetime(folder="./", threshold=10)
 
@@ -83,7 +83,7 @@ writer.flush()
 ```
 
 ```python
-from jsonlogger.logger import LogReader
+from jsonfilelogger.logger import LogReader
 import glob
 
 logs_files = sorted(glob.glob("./[0-9]*.json"))

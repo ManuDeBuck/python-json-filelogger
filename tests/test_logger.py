@@ -2,7 +2,7 @@ import os
 import pytest
 import glob
 
-from jsonlogger.logger import LogWriter, LogReader
+from jsonfilelogger.logger import LogWriter, LogReader
 
 
 def test_writer_and_reader():

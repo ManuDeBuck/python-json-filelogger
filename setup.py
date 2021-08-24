@@ -4,14 +4,14 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="jsonlogger",
+    name="jsonfilelogger",
     version="0.0.1",
     author="Manu De Buck",
     author_email="manu@mdebuck.org",
-    description="A simple json logger for Python",
+    description="A simple json file logger for Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ManuDeBuck/jsonlogger",
+    url="https://github.com/ManuDeBuck/python-json-filelogger",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
