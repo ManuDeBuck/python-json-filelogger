@@ -13,15 +13,25 @@ You can use the python package manager (`pip`) to install the file-logger:
 pip install jsonfilelogger
 ```
 
-## Usage
+## Usage: LogWriter
 
 Create a `LogWriter`:
 
 ```python
 from jsonfilelogger.logger import LogWriter
 
-writer = LogWriter(folder="./", filename="log.json", threshold=10)
+writer = LogWriter(folder=".", filename="log.json", threshold=10)
 ```
+
+### Parameters
+
+`folder`: the folder where the logfile should be stored
+
+`filename`: the name of the logfile
+
+`threshold`: the threshold for auto-flushing; if set None the writer will not autoflush
+
+### Example
 
 Log data to the logfile:
 
@@ -34,6 +44,8 @@ writer.log({"key_int": 1,
             "key_none": None})
 ```
 
+## Usage: LogReader
+
 Create a `LogReader`:
 
 ```python
@@ -42,13 +54,22 @@ from jsonfilelogger.logger import LogReader
 reader = LogReader(folder="./", filename="log.json")
 ```
 
+### Parameters
+
+`folder`: the folder where the logfile should be stored
+
+`filename`: the name of the logfile
+
+### Example
+
 Read data from the logfile:
 
 ```python
 data = reader.retrieve()
+... # do something with the data
 ```
 
-Other methods:
+## Methods
 
 | Class |  Method  | Explanation |
 |:-----|:--------|:------|
@@ -59,7 +80,7 @@ Other methods:
 | LogWriter | `.flush()` | This method flushes the buffer in the writer. The threshold of the buffer is given in the constructor |
 | LogReader | `.retrieve()` | This method retrieves all the data from the logfile and returns it as a list of dictionaries. |
 
-## Example usage
+## Demo usage
 
 An example of how to use this logger is given. Imagine one has created a [major breakthrough AI system](https://i.pinimg.com/originals/ae/fb/01/aefb01c27ddfdfa2cef723f5056252f7.jpg) that still has to be trained. 
 During training one want's to keep an eye on the performance of the progress. To do this, the LogWriter can be added in the learning iterations (e.g. in one Jupyter notebook). 

@@ -50,7 +50,7 @@ class LogWriter(LogBase):
     LogWriter for writing contents to the logfiles.
     """
 
-    def __init__(self, folder: str = "./", filename: str = "log.json", threshold: int = 16):
+    def __init__(self, folder: str = "./", filename: str = "log.json", threshold: int or None = None):
         LogBase.__init__(self, folder, filename)
         self.log_buffer = []  # buffer of all logs before being written to file
         self.threshold = threshold  # threshold before writing to file
@@ -74,7 +74,7 @@ class LogWriter(LogBase):
         :return: None
         """
         self.log_buffer.append(data)
-        if len(self.log_buffer) >= self.threshold:
+        if self.threshold is not None and len(self.log_buffer) >= self.threshold:
             # write all data to file and flush buffer
             self.flush()
 
@@ -126,7 +126,7 @@ class LogReader(LogBase):
     LogReader for reading contents from the logfiles.
     """
 
-    def __init__(self, folder: str = "./", filename: str = "log.json"):
+    def __init__(self, folder: str = ".", filename: str = "log.json"):
         LogBase.__init__(self, folder, filename)
         self.assert_file_exists()
 
