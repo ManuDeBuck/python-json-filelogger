@@ -37,7 +37,7 @@ def test_writer_and_reader():
 def test_writer_and_reader_with_datetime_value():
     writer = LogWriter(threshold=1)
     writer.reset()
-    writer.log({"datetime": datetime.datetime.fromisoformat("2021-11-17 18:23:22.483962")})
+    writer.log({"datetime": datetime.datetime.strptime("2021-11-17 18:23:22.483962", "%Y-%m-%d %H:%M:%S.%f")})
     assert os.path.exists("./log.json")
     reader = LogReader()
     data = reader.retrieve()
