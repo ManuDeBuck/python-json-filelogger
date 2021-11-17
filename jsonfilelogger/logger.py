@@ -10,7 +10,7 @@ class LogBase:
     """
 
     def __init__(self, folder: str = "./", filename: str = "log.json"):
-        self.path = folder + filename
+        self.path = os.path.join(folder, filename)
 
     def assert_file_exists(self):
         """
