@@ -1,3 +1,4 @@
+import datetime
 import os
 import pytest
 import glob
@@ -33,7 +34,24 @@ def test_writer_and_reader():
         reader.assert_file_exists()
 
 
-def test_writer_and_reader_with_datetime():
+def test_writer_and_reader_with_datetime_value():
+    writer = LogWriter(threshold=1)
+    writer.reset()
+    writer.log({"datetime": datetime.datetime.fromisoformat("2021-11-17 18:23:22.483962")})
+    assert os.path.exists("./log.json")
+    reader = LogReader()
+    data = reader.retrieve()
+    assert len(data) == 1
+    assert data == [{"datetime": "2021-11-17 18:23:22.483962"}]
+    reader.reset()
+    data = reader.retrieve()
+    assert len(data) == 0
+    reader.remove()
+    with pytest.raises(Exception):
+        reader.assert_file_exists()
+
+
+def test_writer_and_reader_with_datetime_filename():
     writer = LogWriter.with_datetime(threshold=2)
     writer.reset()
     writer.log({"test": 1, "this": "logger", "with": True, "all": 1.337, "kinds": ["of", "values"]})

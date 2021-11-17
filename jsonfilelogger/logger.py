@@ -1,6 +1,7 @@
 import os
 import json
 import time
+from .custom_encoder import CustomEncoder
 
 
 class LogBase:
@@ -113,7 +114,7 @@ class LogWriter(LogBase):
                 # set ',' for previously added entry
                 file.write(",\n")
             # write new entries
-            file.write(",\n".join([json.dumps(el) for el in self.log_buffer]))
+            file.write(",\n".join([json.dumps(el, cls=CustomEncoder) for el in self.log_buffer]))
             # always close file to have correct json syntax
             file.write("\n]\n")
 
